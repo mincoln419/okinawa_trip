@@ -1,0 +1,14 @@
+title: 오키나와 가족 여행 가이드
+description: 4/28–5/1 3박 4일 아이 동반 여행 플래너
+lang: ko
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - .github
