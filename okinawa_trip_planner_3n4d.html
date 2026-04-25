@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#AB92BF">
+  <title>오키나와 가족 여행 가이드 · 4/28–5/1</title>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --purple:#AB92BF; --mint:#CEF9F2; --steel:#AFC1D6;
+      --pl:#EDE5F5; --pd:#7A5E96;
+      --ml:#E4FBF7; --md:#1A7065;
+      --sl:#EBF0F5; --sd:#3D5F80;
+      --tx:#1A1A2E; --ts:#5A5A7A;
+      --bg:#F4F1F8; --wh:#FFFFFF;
+      --bd:rgba(175,193,214,.55);
+      --sh:0 2px 16px rgba(171,146,191,.14);
+      --r:14px; --rs:8px; --hh:64px;
+    }
+    body{font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR','Segoe UI',sans-serif;font-size:15px;color:var(--tx);background:var(--bg);min-height:100vh;-webkit-text-size-adjust:100%}
+    .hdr{height:var(--hh);background:linear-gradient(135deg,var(--purple) 0%,#8E6FAD 100%);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:0 16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(171,146,191,.35)}
+    .hdr-t{font-size:19px;font-weight:700;letter-spacing:-.5px}
+    .hdr-s{font-size:12px;opacity:.85;margin-top:3px}
+    .tabs{background:var(--wh);padding:8px 12px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;display:flex;gap:6px;position:sticky;top:var(--hh);z-index:90;box-shadow:0 2px 10px rgba(0,0,0,.07)}
+    .tabs::-webkit-scrollbar{display:none}
+    .tab{white-space:nowrap;padding:7px 14px;border-radius:20px;border:1.5px solid var(--bd);font-size:13px;font-weight:500;cursor:pointer;background:var(--wh);color:var(--ts);transition:all .18s;-webkit-tap-highlight-color:transparent;flex-shrink:0;min-height:36px}
+    .tab.active{background:var(--purple);color:#fff;border-color:var(--purple);box-shadow:0 2px 10px rgba(171,146,191,.45)}
+    .content{padding:14px 12px 48px;max-width:800px;margin:0 auto}
+    .panel{display:none}.panel.active{display:block}
+    .grid{display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:12px}
+    @media(min-width:600px){.grid{grid-template-columns:1fr 1fr}.grid.one{grid-template-columns:1fr}}
+    .card{background:var(--wh);border-radius:var(--r);padding:16px;box-shadow:var(--sh)}
+    .card-hdr{display:flex;align-items:center;gap:8px;margin-bottom:14px}
+    .badge{font-size:11px;padding:3px 10px;border-radius:20px;font-weight:600;letter-spacing:.2px}
+    .bp{background:var(--pl);color:var(--pd)}
+    .bm{background:var(--mint);color:var(--md)}
+    .bs{background:var(--sl);color:var(--sd)}
+    .bw{background:#FAEEDA;color:#633806}
+    .bg{background:#F0EEF4;color:#555570}
+    .br{background:#FAECE7;color:#993C1D}
+    .sec{font-size:11px;font-weight:600;color:var(--ts);text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px}
+    .tl{display:flex;flex-direction:column}
+    .tlr{display:grid;grid-template-columns:52px 14px 1fr;gap:0 8px;align-items:start}
+    .tlt{font-size:12px;color:var(--ts);padding-top:3px;text-align:right;font-variant-numeric:tabular-nums}
+    .tll{display:flex;flex-direction:column;align-items:center}
+    .dot{width:10px;height:10px;border-radius:50%;background:var(--purple);flex-shrink:0;margin-top:4px}
+    .dotg{background:var(--steel)}.dote{background:#EA580C}
+    .vert{width:2px;background:var(--sl);flex:1;min-height:18px;margin-top:2px}
+    .tllb{font-size:14px;color:var(--tx);padding:2px 0 16px;line-height:1.4}
+    .tlsb{font-size:12px;color:var(--ts);margin-top:2px}
+    .rule{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid var(--sl)}
+    .rule:last-child{border-bottom:none}
+    .rn{width:22px;height:22px;border-radius:50%;background:var(--pl);color:var(--pd);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .rt{font-size:14px;color:var(--tx);line-height:1.5}
+    .place{background:var(--sl);border-radius:var(--rs);overflow:hidden;margin-bottom:10px}
+    .pimg{width:100%;aspect-ratio:16/7;object-fit:cover;display:block;background:var(--pl)}
+    .pph{width:100%;aspect-ratio:16/7;background:linear-gradient(135deg,var(--pl) 0%,var(--ml) 100%);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--pd);font-weight:500;text-align:center;padding:8px}
+    .pi{padding:10px 12px}
+    .pn{font-size:14px;font-weight:600;color:var(--tx)}
+    .pa{font-size:12px;color:var(--ts);margin-top:3px}
+    .sub{background:var(--pl);border-radius:var(--rs);padding:10px 12px;margin-top:10px;border-left:3px solid var(--purple)}
+    .sub-t{font-size:11px;font-weight:600;color:var(--pd);margin-bottom:4px}
+    .sub-x{font-size:13px;color:var(--pd);line-height:1.6}
+    .warn{background:#FFF0EA;border-radius:var(--rs);padding:10px 12px;margin-top:10px;border-left:3px solid #EA580C}
+    .warn-t{font-size:11px;font-weight:600;color:#993C1D;margin-bottom:3px}
+    .warn-x{font-size:13px;color:#993C1D;line-height:1.5}
+    .info{background:var(--ml);border-radius:var(--rs);padding:10px 12px;margin-top:10px;border-left:3px solid var(--purple)}
+    .info-t{font-size:11px;font-weight:600;color:var(--md);margin-bottom:4px}
+    .info-x{font-size:13px;color:var(--md);line-height:1.6}
+    .acc-btn{width:100%;background:var(--sl);border:none;border-radius:var(--rs);padding:10px 14px;text-align:left;font-size:13px;font-weight:500;color:var(--sd);cursor:pointer;display:flex;justify-content:space-between;align-items:center;margin-top:10px;-webkit-tap-highlight-color:transparent}
+    .acc-btn .arr{transition:transform .2s;font-size:16px;flex-shrink:0}
+    .acc-btn.open .arr{transform:rotate(180deg)}
+    .acc-body{display:none;padding:10px 0 2px}
+    .acc-body.open{display:block}
+    .tip-list{display:flex;flex-direction:column;gap:0}
+    .tip-row{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--sl)}
+    .tip-row:last-child{border-bottom:none}
+    .tip-ic{font-size:18px;flex-shrink:0;line-height:1.2}
+    .tip-head{font-size:14px;font-weight:600;color:var(--tx);margin-bottom:2px}
+    .tip-desc{font-size:13px;color:var(--ts);line-height:1.5}
+    .tip-em{color:var(--pd);font-weight:600}
+    .wgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}
+    .wcell{border-radius:var(--rs);padding:10px}
+    .wl{font-size:11px;font-weight:600;margin-bottom:4px}
+    .wx{font-size:12px;line-height:1.4}
+    .abt{display:flex;gap:8px;margin-bottom:12px}
+    .abn{flex:1;padding:10px 8px;border-radius:var(--rs);border:1.5px solid var(--bd);font-size:13px;font-weight:500;cursor:pointer;transition:all .18s;background:var(--wh);color:var(--ts);-webkit-tap-highlight-color:transparent;line-height:1.3}
+    .abn.sel{background:var(--purple);color:#fff;border-color:var(--purple)}
+    .abc{display:none}.abc.active{display:block}
+    .cond{border-radius:var(--rs);padding:11px 12px;margin-bottom:10px}
+    .cond-t{font-size:12px;font-weight:600;margin-bottom:4px}
+    .cond-x{font-size:13px;line-height:1.5}
+    .bk-card{background:var(--wh);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);margin-bottom:12px}
+    .bk-head{padding:14px 16px 0}
+    .bk-title{font-size:16px;font-weight:700;color:var(--tx);margin-bottom:6px}
+    .bk-meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+    .bk-body{padding:0 16px 14px}
+    .bk-row{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--sl)}
+    .bk-row:last-child{border-bottom:none}
+    .bk-label{font-size:12px;color:var(--ts);width:72px;flex-shrink:0;padding-top:1px}
+    .bk-val{font-size:13px;color:var(--tx);font-weight:500;line-height:1.4}
+    .bk-link{display:block;background:var(--purple);color:#fff;text-align:center;padding:13px;text-decoration:none;font-size:14px;font-weight:600;border-radius:0 0 var(--r) var(--r)}
+    .bk-link:active{background:var(--pd)}
+    .menu-item{display:flex;justify-content:space-between;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--sl)}
+    .menu-item:last-child{border-bottom:none}
+    .menu-name{font-size:13px;color:var(--tx);line-height:1.4;flex:1}
+    .menu-sub{font-size:11px;color:var(--ts);display:block;margin-top:1px}
+    .menu-price{font-size:13px;font-weight:600;color:var(--pd);white-space:nowrap;margin-left:12px;padding-top:1px}
+    .res-head{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px}
+    .res-icon{width:42px;height:42px;border-radius:var(--rs);background:var(--pl);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+    .res-name{font-size:15px;font-weight:700;color:var(--tx)}
+    .res-desc{font-size:12px;color:var(--ts);margin-top:2px}
+    .food-tags{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0}
+    .food-desc{font-size:13px;color:var(--ts);margin-bottom:8px}
+    @media(max-width:380px){.abt{flex-direction:column}.hdr-t{font-size:17px}}
+  </style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-t">오키나와 가족 여행 가이드</div>
+  <div class="hdr-s">4/28(화) → 5/1(금) &nbsp;·&nbsp; 3박 4일 · 아이 동반</div>
+</header>
+
+<nav class="tabs">
+  <button class="tab active" onclick="go('ov',this)">전체 원칙</button>
+  <button class="tab" onclick="go('d1',this)">Day 1 · 4/28</button>
+  <button class="tab" onclick="go('d2',this)">Day 2 · 4/29</button>
+  <button class="tab" onclick="go('d3',this)">Day 3 · 4/30</button>
+  <button class="tab" onclick="go('d4',this)">Day 4 · 5/1</button>
+  <button class="tab" onclick="go('food',this)">식당</button>
+  <button class="tab" onclick="go('book',this)">예약확인</button>
+  <button class="tab" onclick="go('tips',this)">여행팁</button>
+</nav>
+
+<main class="content">
+
+<!-- ═══ OVERVIEW ═══ -->
+<div id="ov" class="panel active">
+  <div class="grid one">
+    <div class="card">
+      <div class="card-hdr"><span class="badge bp">운영 원칙 4가지</span></div>
+      <div class="rule"><div class="rn">1</div><div class="rt">동물원은 <strong>맑은 날 오전</strong> — 야외 동물 컨디션 최상</div></div>
+      <div class="rule"><div class="rn">2</div><div class="rt">츄라우미는 <strong>비 오는 날</strong> — 실내라 날씨 무관</div></div>
+      <div class="rule"><div class="rn">3</div><div class="rt">장거리 이동 <strong>하루 1회, 최대 1.5시간</strong></div></div>
+      <div class="rule"><div class="rn">4</div><div class="rt">아이 컨디션이 최우선 — 일정은 언제든 축소 가능</div></div>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="sec">3박 4일 흐름</div>
+      <div class="tl">
+        <div class="tlr"><div class="tlt">4/28</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">도착 &amp; 적응<div class="tlsb">American Village · 저녁만</div></div></div>
+        <div class="tlr"><div class="tlt">4/29</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">동물원 핵심일<div class="tlsb">Okinawa Zoo — 오전 집중</div></div></div>
+        <div class="tlr"><div class="tlt">4/30</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">츄라우미 + 북부<div class="tlsb">만좌모 경유 → 수족관</div></div></div>
+        <div class="tlr"><div class="tlt">5/1</div><div class="tll"><div class="dot dote"></div></div><div class="tllb">A/B안 선택 후 출국<div class="tlsb">18:00 출국편</div></div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="sec">날씨 대응 매트릭스</div>
+      <div class="wgrid">
+        <div class="wcell" style="background:var(--ml)"><div class="wl" style="color:var(--md)">맑은 날 ☀️</div><div class="wx" style="color:var(--md)">동물원 → 만좌모 야외</div></div>
+        <div class="wcell" style="background:var(--sl)"><div class="wl" style="color:var(--sd)">비 오는 날 🌧️</div><div class="wx" style="color:var(--sd)">츄라우미 실내 우선</div></div>
+        <div class="wcell" style="background:#F0EEF4"><div class="wl" style="color:#555570">컨디션 저하 😴</div><div class="wx" style="color:#555570">라이컴몰 휴식</div></div>
+        <div class="wcell" style="background:var(--pl)"><div class="wl" style="color:var(--pd)">여유 있을 때 ✨</div><div class="wx" style="color:var(--pd)">Bios no Oka 추가</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="sec">예약 현황</div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:10px;background:var(--ml);border-radius:var(--rs)">
+        <div><div style="font-size:13px;font-weight:600;color:var(--md)">오키나와 동물원 입장권</div><div style="font-size:12px;color:var(--ts);margin-top:2px">4/29 (수) · ₩8,076/인 · QR 입장</div></div>
+        <span class="badge bm">예약대기</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:10px;background:var(--pl);border-radius:var(--rs)">
+        <div><div style="font-size:13px;font-weight:600;color:var(--pd)">츄라우미 수족관 입장권</div><div style="font-size:12px;color:var(--ts);margin-top:2px">4/30 (목) · ₩5,857~/인 · QR 입장</div></div>
+        <span class="badge bp">예약대기</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ DAY 1 ═══ -->
+<div id="d1" class="panel">
+  <div class="grid">
+    <div class="card">
+      <div class="card-hdr"><span class="badge bp">타임라인 · 4/28 (화)</span></div>
+      <div class="tl">
+        <div class="tlr"><div class="tlt">17:00</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">나하 공항 도착</div></div>
+        <div class="tlr"><div class="tlt">18:00</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">렌트카 픽업<div class="tlsb">셔틀 → 영업소, 차량 외관 체크 꼼꼼히</div></div></div>
+        <div class="tlr"><div class="tlt">19:00</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">숙소 체크인</div></div>
+        <div class="tlr"><div class="tlt">19:40</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">American Village 이동<div class="tlsb">숙소에서 약 20분</div></div></div>
+        <div class="tlr"><div class="tlt">20:10</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">저녁 — Ootoya<div class="tlsb">생선구이 정식, 어린이 메뉴 있음</div></div></div>
+        <div class="tlr"><div class="tlt">21:00</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">Depot Island 야경 산책</div></div>
+        <div class="tlr"><div class="tlt">22:00</div><div class="tll"><div class="dot dotg"></div></div><div class="tllb">숙소 귀환</div></div>
+      </div>
+      <div class="sub"><div class="sub-t">서브 플랜</div><div class="sub-x">피곤하면 → 저녁만 먹고 바로 숙소<br>컨디션 좋으면 → Depot Island 야경 산책</div></div>
+    </div>
+    <div class="card">
+      <div class="sec">주요 장소</div>
+      <div class="place">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/American_Village%2C_Okinawa_%282%29.jpg/640px-American_Village%2C_Okinawa_%282%29.jpg" alt="American Village" class="pimg" onerror="imgErr(this,'American Village')">
+        <div class="pi"><div class="pn">American Village</div><div class="pa">北谷町美浜 · 주차 무료 (대규모)</div><div class="pa">TEL: 098-926-4455</div></div>
+      </div>
+      <div class="place">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Depot_island_chatan.jpg/640px-Depot_island_chatan.jpg" alt="Depot Island" class="pimg" onerror="imgErr(this,'Depot Island · 야경 명소')">
+        <div class="pi"><div class="pn">Depot Island</div><div class="pa">American Village 내 · 야경 명소</div></div>
+      </div>
+      <button class="acc-btn" onclick="acc(this)"><span>📍 현장 팁</span><span class="arr">▾</span></button>
+      <div class="acc-body">
+        <div class="tip-list">
+          <div class="tip-row"><div class="tip-ic">🅿️</div><div class="tip-body"><div class="tip-head">주차</div><div class="tip-desc">American Village 내 무료 주차장 여러 곳. 저녁엔 혼잡 — <span class="tip-em">입구 쪽 1층 우선</span></div></div></div>
+          <div class="tip-row"><div class="tip-ic">🌅</div><div class="tip-body"><div class="tip-head">야경 포인트</div><div class="tip-desc">대관람차 앞 광장 → Sunset Beach 방향 3분 거리</div></div></div>
+          <div class="tip-row"><div class="tip-ic">🛍️</div><div class="tip-body"><div class="tip-head">쇼핑 팁</div><div class="tip-desc">기념품 쇼핑은 마지막 날에. 오늘은 야경 산책 위주로</div></div></div>
+          <div class="tip-row"><div class="tip-ic">🏪</div><div class="tip-body"><div class="tip-head">편의점</div><div class="tip-desc">FamilyMart · Lawson 도보권. <span class="tip-em">다음날 동물원 간식 미리 구매</span> 추천</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ DAY 2 ═══ -->
+<div id="d2" class="panel">
+  <div class="grid">
+    <div class="card">
+      <div class="card-hdr"><span class="badge bm">타임라인 · 4/29 (수)</span></div>
+      <div class="tl">
+        <div class="tlr"><div class="tlt">08:00</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">숙소 출발</div></div>
+        <div class="tlr"><div class="tlt">09:00</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">Okinawa Zoo 도착 · 입장<div class="tlsb">QR코드 미리 준비</div></div></div>
+        <div class="tlr"><div class="tlt">09:30</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">기린 · 코끼리 구역<div class="tlsb">오전이 동물 활동 최고조</div></div></div>
+        <div class="tlr"><div class="tlt">11:00</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">어린이 동물원 구역<div class="tlsb">토끼·양 먹이주기 체험</div></div></div>
+        <div class="tlr"><div class="tlt">12:00</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">점심 — Ootoya</div></div>
+        <div class="tlr"><div class="tlt">13:30</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">숙소 복귀</div></div>
+        <div class="tlr"><div class="tlt">14:30</div><div class="tll"><div class="dot dotg"></div></div><div class="tllb">낮잠 · 휴식 (내일 대비)</div></div>
+      </div>
+      <div class="sub"><div class="sub-t">서브 플랜 (날씨 좋고 여유 있으면)</div><div class="sub-x">동물원 → Bios no Oka (자연 체험, 보트 투어 가능)</div></div>
+      <div class="warn"><div class="warn-t">오후 비 또는 아이 지침</div><div class="warn-x">AEON MALL 라이컴 → 키즈존 + 실내 쇼핑 + 식사</div></div>
+    </div>
+    <div class="card">
+      <div class="sec">주요 장소</div>
+      <div class="place">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Okinawa_Zoo_and_Museum_2010.jpg/640px-Okinawa_Zoo_and_Museum_2010.jpg" alt="Okinawa Zoo" class="pimg" onerror="imgErr(this,'Okinawa Zoo & Museum')">
+        <div class="pi">
+          <div class="pn">Okinawa Zoo &amp; Museum &nbsp;<span style="font-size:11px;background:var(--mint);color:var(--md);padding:1px 7px;border-radius:8px">예약대기</span></div>
+          <div class="pa">沖縄市胡屋5-7-1 · 주차 무료</div>
+          <div class="pa">TEL: 098-933-4190 · 09:30–17:30</div>
+        </div>
+      </div>
+      <div class="place">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Bios_no_Oka_boat.jpg/640px-Bios_no_Oka_boat.jpg" alt="Bios no Oka" class="pimg" onerror="imgErr(this,'Bios no Oka')">
+        <div class="pi"><div class="pn">Bios no Oka <span style="font-size:11px;color:var(--ts)">(서브 플랜)</span></div><div class="pa">うるま市石川嘉手苅961-30 · 동물원에서 차 20분</div></div>
+      </div>
+      <button class="acc-btn" onclick="acc(this)"><span>📍 동물원 관람 팁</span><span class="arr">▾</span></button>
+      <div class="acc-body">
+        <div class="tip-list">
+          <div class="tip-row"><div class="tip-ic">🎟️</div><div class="tip-body"><div class="tip-head">QR 입장</div><div class="tip-desc">인터파크 QR코드 화면 밝기 최대로. 종이 출력 없이 그대로 제시</div></div></div>
+          <div class="tip-row"><div class="tip-ic">🦒</div><div class="tip-body"><div class="tip-head">기린 먹이주기</div><div class="tip-desc">보통 14:00 전후. 입장 후 원내 공지 확인</div></div></div>
+          <div class="tip-row"><div class="tip-ic">☀️</div><div class="tip-body"><div class="tip-head">오전이 핵심</div><div class="tip-desc">9–11시 동물 활동 활발. 오후엔 그늘로 들어가므로 오전 집중</div></div></div>
+          <div class="tip-row"><div class="tip-ic">🎒</div><div class="tip-body"><div class="tip-head">준비물</div><div class="tip-desc">모자 · 선크림 · 물 · 간식 필수. 원내 매점 있지만 비쌈</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ DAY 3 ═══ -->
+<div id="d3" class="panel">
+  <div class="grid">
+    <div class="card">
+      <div class="card-hdr"><span class="badge bm">타임라인 · 4/30 (목)</span></div>
+      <div class="tl">
+        <div class="tlr"><div class="tlt">08:00</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">숙소 출발</div></div>
+        <div class="tlr"><div class="tlt">09:30</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">만좌모 경유 20분<div class="tlsb">절벽 위 코끼리 바위 · 사진 명소</div></div></div>
+        <div class="tlr"><div class="tlt">10:00</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">만좌모 출발 · 수족관으로</div></div>
+        <div class="tlr"><div class="tlt">11:00</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">츄라우미 수족관 입장<div class="tlsb">QR코드 준비</div></div></div>
+        <div class="tlr"><div class="tlt">11:30</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">쿠로시오의 바다 수조<div class="tlsb">고래상어 · 만타레이 핵심 포인트</div></div></div>
+        <div class="tlr"><div class="tlt">12:30</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">수족관 내 점심<div class="tlsb">3F 카페테리아 or 편의점 도시락 지참</div></div></div>
+        <div class="tlr"><div class="tlt">13:30</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">이르카 오션 (돌고래 쇼) 관람</div></div>
+        <div class="tlr"><div class="tlt">14:00</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">출발 · 숙소로</div></div>
+        <div class="tlr"><div class="tlt">16:30</div><div class="tll"><div class="dot dotg"></div></div><div class="tllb">숙소 복귀</div></div>
+      </div>
+      <div class="sub"><div class="sub-t">서브 플랜 (시간 여유 시)</div><div class="sub-x">Okashi Goten Onna — 오키나와 과자 공장 견학, 무료 시식, 아이 선호</div></div>
+      <div class="warn"><div class="warn-t">비 강하면</div><div class="warn-x">만좌모 생략 → 바로 수족관 직행 (실내라 날씨 무관)</div></div>
+    </div>
+    <div class="card">
+      <div class="sec">주요 장소</div>
+      <div class="place">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Manzamo_cape.jpg/640px-Manzamo_cape.jpg" alt="Cape Manzamo" class="pimg" onerror="imgErr(this,'Cape Manzamo')">
+        <div class="pi"><div class="pn">Cape Manzamo (경유)</div><div class="pa">恩納村恩納 · TEL: 098-966-1280</div><div class="pa">주차: ¥100/20분 (소형차 기준)</div></div>
+      </div>
+      <div class="place">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Okinawa_Churaumi_Aquarium_-_Whale_shark_and_manta_rays.jpg/640px-Okinawa_Churaumi_Aquarium_-_Whale_shark_and_manta_rays.jpg" alt="Churaumi Aquarium" class="pimg" onerror="imgErr(this,'Okinawa Churaumi Aquarium')">
+        <div class="pi">
+          <div class="pn">Okinawa Churaumi Aquarium &nbsp;<span style="font-size:11px;background:var(--pl);color:var(--pd);padding:1px 7px;border-radius:8px">예약대기</span></div>
+          <div class="pa">本部町石川424 · 주차 무료</div>
+          <div class="pa">TEL: 0980-48-3748 · 08:30–18:30</div>
+        </div>
+      </div>
+      <button class="acc-btn" onclick="acc(this)"><span>📍 수족관 완전 공략</span><span class="arr">▾</span></button>
+      <div class="acc-body">
+        <div class="tip-list">
+          <div class="tip-row"><div class="tip-ic">🦈</div><div class="tip-body"><div class="tip-head">고래상어 먹이주기</div><div class="tip-desc">보통 하루 2회 — <span class="tip-em">오전 8:30 · 오후 15:30</span>. 입장 후 시간표 확인 필수</div></div></div>
+          <div class="tip-row"><div class="tip-ic">🐬</div><div class="tip-body"><div class="tip-head">돌고래 쇼 (이르카 오션)</div><div class="tip-desc">야외 풀장. 1일 수회. 입장 후 공연 시간표 확인, 줄 일찍</div></div></div>
+          <div class="tip-row"><div class="tip-ic">🎟️</div><div class="tip-body"><div class="tip-head">QR 입장</div><div class="tip-desc">인터파크 QR코드 제시. <span class="tip-em">마지막 입장 17:30</span></div></div></div>
+          <div class="tip-row"><div class="tip-ic">🍱</div><div class="tip-body"><div class="tip-head">식사</div><div class="tip-desc">원내 식당 비쌈 (¥1,500~). <span class="tip-em">편의점 도시락 지참 권장</span></div></div></div>
+          <div class="tip-row"><div class="tip-ic">📸</div><div class="tip-body"><div class="tip-head">베스트 포토 스팟</div><div class="tip-desc">쿠로시오의 바다 2층 유리창 앞. 오전 11–12시 조명 최상</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ DAY 4 ═══ -->
+<div id="d4" class="panel">
+  <div class="abt">
+    <button class="abn sel" onclick="showAB('a',this)">A안 — 해변 산책 (기본 추천)</button>
+    <button class="abn" onclick="showAB('b',this)">B안 — 동물원 재방문 (조건부)</button>
+  </div>
+  <div id="ab-a" class="abc active">
+    <div class="grid">
+      <div class="card">
+        <div class="card-hdr"><span class="badge bg">타임라인 · A안 · 5/1 (금)</span></div>
+        <div class="tl">
+          <div class="tlr"><div class="tlt">08:00</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">조식 · 체크아웃</div></div>
+          <div class="tlr"><div class="tlt">10:20</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">Naminoue Beach 산책<div class="tlsb">나하 시내 근처, 마지막 해변</div></div></div>
+          <div class="tlr"><div class="tlt">12:00</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">점심 — Ootoya or 국제거리</div></div>
+          <div class="tlr"><div class="tlt">13:30</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">국제거리 기념품 쇼핑<div class="tlsb">ちんすこう · 자색고구마 타르트</div></div></div>
+          <div class="tlr"><div class="tlt">14:30</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">공항 이동 (나하 약 15분)</div></div>
+          <div class="tlr"><div class="tlt">16:00</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">렌트카 반납 · 수속</div></div>
+          <div class="tlr"><div class="tlt">18:00</div><div class="tll"><div class="dot dote"></div></div><div class="tllb">출국</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="sec">A안 선택 기준</div>
+        <div class="cond" style="background:var(--ml)">
+          <div class="cond-t" style="color:var(--md)">✅ 이 경우 A안 선택</div>
+          <div class="cond-x" style="color:var(--md)">Day 2에 동물원을 충분히 즐긴 경우. 마지막 날은 여유롭게 해변 + 쇼핑으로 마무리</div>
+        </div>
+        <div class="place">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Naminoue_beach%2C_Naha%2C_Okinawa.jpg/640px-Naminoue_beach%2C_Naha%2C_Okinawa.jpg" alt="Naminoue Beach" class="pimg" onerror="imgErr(this,'Naminoue Beach')">
+          <div class="pi"><div class="pn">Naminoue Beach</div><div class="pa">那覇市辻3丁目 · 주차 ¥500~</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="ab-b" class="abc">
+    <div class="grid">
+      <div class="card">
+        <div class="card-hdr"><span class="badge bw">타임라인 · B안 · 5/1 (금)</span></div>
+        <div class="tl">
+          <div class="tlr"><div class="tlt">08:00</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">조식 · 체크아웃</div></div>
+          <div class="tlr"><div class="tlt">09:00</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">동물원 출발</div></div>
+          <div class="tlr"><div class="tlt">10:00</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">Okinawa Zoo 관람<div class="tlsb">핵심 구역 집중 관람</div></div></div>
+          <div class="tlr"><div class="tlt">12:30</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">관람 종료 · 점심</div></div>
+          <div class="tlr"><div class="tlt">14:00</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">공항 이동</div></div>
+          <div class="tlr"><div class="tlt">16:00</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">렌트카 반납 · 수속</div></div>
+          <div class="tlr"><div class="tlt">18:00</div><div class="tll"><div class="dot dote"></div></div><div class="tllb">출국</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="sec">B안 선택 기준</div>
+        <div class="cond" style="background:#FAEEDA">
+          <div class="cond-t" style="color:#633806">⚠️ 이 경우 B안 선택</div>
+          <div class="cond-x" style="color:#854F0B">Day 2에 비·컨디션 문제로 동물원을 충분히 못 즐긴 경우 → 마지막 날 재도전. 시간 촉박하니 핵심 구역만</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FOOD ═══ -->
+<div id="food" class="panel">
+  <div class="card" style="margin-bottom:12px">
+    <div class="res-head">
+      <div class="res-icon">🍱</div>
+      <div><div class="res-name">大戸屋 Ootoya</div><div class="res-desc">정식 체인 · 아이 동반 1순위 · 매일 사용 가능</div></div>
+    </div>
+    <div class="food-tags"><span class="badge bm">생선구이</span><span class="badge bm">덮밥</span><span class="badge bm">어린이 메뉴</span><span class="badge bp">간 약함</span></div>
+    <div class="sec">대표 메뉴 &amp; 가격 (세금 포함)</div>
+    <div class="menu-item"><div class="menu-name">鯖の炭火焼き定食<span class="menu-sub">고등어 숯불구이 정식 (밥·된장국·반찬 포함)</span></div><div class="menu-price">¥1,100</div></div>
+    <div class="menu-item"><div class="menu-name">炭火焼きチキン定食<span class="menu-sub">닭 숯불구이 정식</span></div><div class="menu-price">¥1,090</div></div>
+    <div class="menu-item"><div class="menu-name">黒酢あん定食<span class="menu-sub">흑초 소스 닭고기 정식</span></div><div class="menu-price">¥1,090</div></div>
+    <div class="menu-item"><div class="menu-name">野菜たっぷりとりかつ定食<span class="menu-sub">치킨 카츠 + 채소 정식</span></div><div class="menu-price">¥1,090</div></div>
+    <div class="menu-item"><div class="menu-name">日替わり定食<span class="menu-sub">오늘의 정식 (매일 변경)</span></div><div class="menu-price">¥1,090~</div></div>
+    <div class="menu-item"><div class="menu-name">お子さまセット<span class="menu-sub">어린이 세트 (함박스테이크 or 우동 선택)</span></div><div class="menu-price">¥598</div></div>
+    <div class="menu-item"><div class="menu-name">ご飯おかわり<span class="menu-sub">밥 리필</span></div><div class="menu-price">무료</div></div>
+    <div class="info"><div class="info-t">라이컴몰 (AEON Rycom) 지점</div><div class="info-x">TEL: 098-930-6000 · 나하에서 차 25분<br>비 오는 날 라이컴몰 이동 시 동일 지점 이용 가능</div></div>
+  </div>
+
+  <div class="card" style="margin-bottom:12px">
+    <div class="res-head">
+      <div class="res-icon">🍣</div>
+      <div><div class="res-name">SUSHI BAR よし八 Yoshihachi</div><div class="res-desc">창작 스시 바 · 아메리칸빌리지 인근</div></div>
+    </div>
+    <div class="food-tags"><span class="badge bg">초밥</span><span class="badge bg">캘리포니아롤</span><span class="badge bg">새우튀김</span></div>
+    <div class="sec">메뉴 &amp; 가격</div>
+    <div class="menu-item"><div class="menu-name">캘리포니아 롤<span class="menu-sub">오키나와 로컬 재료 사용</span></div><div class="menu-price">¥800~</div></div>
+    <div class="menu-item"><div class="menu-name">레인보우 롤<span class="menu-sub">색감 화려한 창작 롤</span></div><div class="menu-price">¥1,200~</div></div>
+    <div class="menu-item"><div class="menu-name">새우 튀김 롤</div><div class="menu-price">¥900~</div></div>
+    <div class="menu-item"><div class="menu-name">1인 평균 예산</div><div class="menu-price">¥2,000~2,500</div></div>
+    <div class="sub"><div class="sub-t">위치 &amp; 예약</div><div class="sub-x">北谷町桑江590-3 · 아메리칸빌리지에서 차 5분<br>저녁 혼잡 — 예약 권장</div></div>
+  </div>
+
+  <div class="card" style="margin-bottom:12px">
+    <div class="res-head">
+      <div class="res-icon">🐟</div>
+      <div><div class="res-name">魚まる Uomaru</div><div class="res-desc">간단 생선 정식 · 가성비 좋음</div></div>
+    </div>
+    <div class="food-tags"><span class="badge bg">생선정식</span><span class="badge bg">가성비</span></div>
+    <div class="sec">메뉴 &amp; 가격</div>
+    <div class="menu-item"><div class="menu-name">생선 정식 日替わり<span class="menu-sub">그날 생선에 따라 구이/조림 변경</span></div><div class="menu-price">¥800~1,000</div></div>
+    <div class="menu-item"><div class="menu-name">1인 평균 예산</div><div class="menu-price">¥1,000~1,200</div></div>
+    <div class="sub"><div class="sub-t">네비 입력</div><div class="sub-x">전화번호로 네비 검색 추천 (주소보다 정확)</div></div>
+  </div>
+
+  <div class="card">
+    <div class="sec">식사 공통 팁</div>
+    <div class="tip-list">
+      <div class="tip-row"><div class="tip-ic">🗺️</div><div class="tip-body"><div class="tip-head">네비 검색</div><div class="tip-desc">식당 주소보다 <span class="tip-em">전화번호 입력</span>이 훨씬 정확</div></div></div>
+      <div class="tip-row"><div class="tip-ic">⏰</div><div class="tip-body"><div class="tip-head">브레이크타임 주의</div><div class="tip-desc">일본 식당 대부분 14:30–17:00 브레이크. 도착 전 확인</div></div></div>
+      <div class="tip-row"><div class="tip-ic">💴</div><div class="tip-body"><div class="tip-head">결제</div><div class="tip-desc">현금 선호 가게 많음. ¥5,000~10,000 현금 상시 지참</div></div></div>
+      <div class="tip-row"><div class="tip-ic">🧒</div><div class="tip-body"><div class="tip-head">아이 식사</div><div class="tip-desc">Ootoya お子さまセット(¥598)이 가장 안정적. 소금기 적음</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ BOOKING ═══ -->
+<div id="book" class="panel">
+  <div class="bk-card">
+    <div class="bk-head">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px"><span class="badge bm">예약 1 · Day 2</span><span class="badge bm">예약대기</span></div>
+      <div class="bk-title">오키나와 동물원 &amp; 박물관 입장권</div>
+      <div class="bk-meta"><span class="badge bg">4/29 (수) 사용</span><span class="badge bg">QR 즉시 입장</span><span class="badge bg">₩8,076 / 인</span></div>
+    </div>
+    <div class="bk-body">
+      <div class="bk-row"><div class="bk-label">사용일</div><div class="bk-val">2026년 4월 29일 (수)</div></div>
+      <div class="bk-row"><div class="bk-label">운영시간</div><div class="bk-val">09:30 – 17:30 (평일 기준)</div></div>
+      <div class="bk-row"><div class="bk-label">입장방법</div><div class="bk-val">QR코드 스캔 · 인쇄 불필요</div></div>
+      <div class="bk-row"><div class="bk-label">바우처</div><div class="bk-val">발급 최대 30분 → 전날 저녁 미리 받아두기</div></div>
+      <div class="bk-row"><div class="bk-label">주소</div><div class="bk-val">沖縄市胡屋5-7-1</div></div>
+      <div class="bk-row"><div class="bk-label">TEL</div><div class="bk-val">098-933-4190</div></div>
+    </div>
+    <a class="bk-link" href="https://travel.interpark.com/tna/order/f7cbd6de-617c-49da-92e7-653189c4e430?productId=f9adb465-68d5-4167-9e96-ffbd65036206&startDate=2026-04-25&endDate=2027-04-24&selectedDate=2026-04-29" target="_blank">인터파크 예약 페이지 열기 →</a>
+  </div>
+
+  <div class="bk-card">
+    <div class="bk-head">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px"><span class="badge bp">예약 2 · Day 3</span><span class="badge bp">예약대기</span></div>
+      <div class="bk-title">오키나와 츄라우미 수족관 입장권</div>
+      <div class="bk-meta"><span class="badge bg">4/30 (목) 사용</span><span class="badge bg">QR 즉시 입장</span><span class="badge bg">₩5,857~ / 인</span></div>
+    </div>
+    <div class="bk-body">
+      <div class="bk-row"><div class="bk-label">사용일</div><div class="bk-val">2026년 4월 30일 (목)</div></div>
+      <div class="bk-row"><div class="bk-label">운영시간</div><div class="bk-val">08:30 – 18:30 · 마지막 입장 17:30</div></div>
+      <div class="bk-row"><div class="bk-label">입장방법</div><div class="bk-val">QR코드 스캔 · 인쇄 불필요</div></div>
+      <div class="bk-row"><div class="bk-label">바우처</div><div class="bk-val">발급 최대 30분 → 전날 저녁 미리 받아두기</div></div>
+      <div class="bk-row"><div class="bk-label">주소</div><div class="bk-val">本部町石川424</div></div>
+      <div class="bk-row"><div class="bk-label">TEL</div><div class="bk-val">0980-48-3748</div></div>
+    </div>
+    <a class="bk-link" href="https://travel.interpark.com/tna/products/2b063162-48ff-4ec3-b784-6dfd877cd875?startDate=2026-04-26&endDate=2027-04-24&id=2b063162-48ff-4ec3-b784-6dfd877cd875&selectedDate=2026-04-26" target="_blank">인터파크 예약 페이지 열기 →</a>
+  </div>
+
+  <div class="card">
+    <div class="sec">QR 체크리스트</div>
+    <div class="tip-list">
+      <div class="tip-row"><div class="tip-ic">📲</div><div class="tip-body"><div class="tip-head">4/28 저녁 — 두 티켓 모두 바우처 발급</div><div class="tip-desc">인터파크 앱 또는 이메일에서 QR코드 확인. 스크린샷 저장 권장</div></div></div>
+      <div class="tip-row"><div class="tip-ic">🔆</div><div class="tip-body"><div class="tip-head">입장 시 화면 밝기 최대로</div><div class="tip-desc">어두운 스캐너에서도 인식되도록</div></div></div>
+      <div class="tip-row"><div class="tip-ic">📶</div><div class="tip-body"><div class="tip-head">오프라인 대비 — 스크린샷 저장</div><div class="tip-desc">인터넷 없어도 갤러리에서 QR 제시 가능</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TIPS ═══ -->
+<div id="tips" class="panel">
+  <div class="card" style="margin-bottom:12px">
+    <div class="card-hdr"><span class="badge bp">운전 &amp; 주차</span></div>
+    <div class="tip-list">
+      <div class="tip-row"><div class="tip-ic">🚗</div><div class="tip-body"><div class="tip-head">좌측통행</div><div class="tip-desc">한국과 반대. 교차로마다 <span class="tip-em">왼쪽 확인</span> 습관화. 첫 2–3시간이 가장 긴장됨</div></div></div>
+      <div class="tip-row"><div class="tip-ic">📜</div><div class="tip-body"><div class="tip-head">국제운전면허증</div><div class="tip-desc">한국 면허증과 함께 반드시 지참. 렌트카 픽업 시 제시</div></div></div>
+      <div class="tip-row"><div class="tip-ic">🚫</div><div class="tip-body"><div class="tip-head">황색 실선 = 주차 절대 금지</div><div class="tip-desc">벌금 ¥5,000~20,000. 관광지는 대부분 무료 주차장 있음</div></div></div>
+      <div class="tip-row"><div class="tip-ic">🚌</div><div class="tip-body"><div class="tip-head">나하 시내 버스전용차로</div><div class="tip-desc">출퇴근 시간대 일부 차선 버스 전용. 표지판 확인</div></div></div>
+      <div class="tip-row"><div class="tip-ic">⛽</div><div class="tip-body"><div class="tip-head">주유</div><div class="tip-desc">레귤러 가솔린. ¥175~190/L 예상. 반납 전 만탱크 필수</div></div></div>
+      <div class="tip-row"><div class="tip-ic">🗺️</div><div class="tip-body"><div class="tip-head">네비</div><div class="tip-desc"><span class="tip-em">Yahoo!カーナビ (무료 앱)</span> 추천. 목적지는 전화번호로 검색이 가장 정확</div></div></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:12px">
+    <div class="card-hdr"><span class="badge bm">결제 &amp; 환전</span></div>
+    <div class="tip-list">
+      <div class="tip-row"><div class="tip-ic">💴</div><div class="tip-body"><div class="tip-head">현금</div><div class="tip-desc">¥20,000~30,000 환전 권장. 소규모 식당·주차장 현금만</div></div></div>
+      <div class="tip-row"><div class="tip-ic">💳</div><div class="tip-body"><div class="tip-head">카드</div><div class="tip-desc">Visa/Mastercard 대부분 사용 가능. AEON몰·편의점은 카드 OK</div></div></div>
+      <div class="tip-row"><div class="tip-ic">🏧</div><div class="tip-body"><div class="tip-head">ATM</div><div class="tip-desc">Seven-Eleven · JapanPost ATM에서 해외 카드 출금 가능</div></div></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:12px">
+    <div class="card-hdr"><span class="badge bs">필수 앱</span></div>
+    <div class="tip-list">
+      <div class="tip-row"><div class="tip-ic">🗺️</div><div class="tip-body"><div class="tip-head">Yahoo!カーナビ</div><div class="tip-desc">일본 최고의 무료 내비. 전화번호 검색 지원. 사전 설치 권장</div></div></div>
+      <div class="tip-row"><div class="tip-ic">📍</div><div class="tip-body"><div class="tip-head">Google Maps</div><div class="tip-desc">식당 검색·리뷰 확인용. 네비는 Yahoo! 우선</div></div></div>
+      <div class="tip-row"><div class="tip-ic">🌐</div><div class="tip-body"><div class="tip-head">Google 번역 (카메라 모드)</div><div class="tip-desc">메뉴판 촬영 → 실시간 번역. 식당에서 필수</div></div></div>
+      <div class="tip-row"><div class="tip-ic">☁️</div><div class="tip-body"><div class="tip-head">tenki.jp</div><div class="tip-desc">일본 기상청 앱. 오키나와 날씨 가장 정확</div></div></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:12px">
+    <div class="card-hdr"><span class="badge bg">날씨 &amp; 복장</span></div>
+    <div class="tip-list">
+      <div class="tip-row"><div class="tip-ic">🌡️</div><div class="tip-body"><div class="tip-head">4월 말 오키나와</div><div class="tip-desc">낮 기온 22–27°C. 반팔 + 얇은 긴팔 레이어링. 비 오면 다소 쌀쌀</div></div></div>
+      <div class="tip-row"><div class="tip-ic">☔</div><div class="tip-body"><div class="tip-head">우비</div><div class="tip-desc">접이식 우산 또는 경량 우비. 야외에서 갑자기 비 올 수 있음</div></div></div>
+      <div class="tip-row"><div class="tip-ic">🕶️</div><div class="tip-body"><div class="tip-head">자외선</div><div class="tip-desc">맑은 날 자외선 강함. <span class="tip-em">선크림 SPF50+ · 모자 필수</span></div></div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-hdr"><span class="badge br">긴급 연락처</span></div>
+    <div class="tip-list">
+      <div class="tip-row"><div class="tip-ic">🚔</div><div class="tip-body"><div class="tip-head">경찰</div><div class="tip-desc"><strong style="font-size:16px">110</strong></div></div></div>
+      <div class="tip-row"><div class="tip-ic">🚑</div><div class="tip-body"><div class="tip-head">소방 · 구급</div><div class="tip-desc"><strong style="font-size:16px">119</strong></div></div></div>
+      <div class="tip-row"><div class="tip-ic">🏥</div><div class="tip-body"><div class="tip-head">나하 시립 병원</div><div class="tip-desc">098-887-2151 · 외국어 대응 가능</div></div></div>
+      <div class="tip-row"><div class="tip-ic">🚗</div><div class="tip-body"><div class="tip-head">렌트카 긴급</div><div class="tip-desc">렌트카 계약서 앞면 확인 — <span class="tip-em">픽업 시 바로 저장</span></div></div></div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<script>
+function go(id,el){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function showAB(ab,el){
+  document.querySelectorAll('.abc').forEach(c=>c.classList.remove('active'));
+  document.querySelectorAll('.abn').forEach(b=>b.classList.remove('sel'));
+  document.getElementById('ab-'+ab).classList.add('active');
+  el.classList.add('active');
+}
+function acc(btn){
+  btn.classList.toggle('open');
+  btn.nextElementSibling.classList.toggle('open');
+}
+function imgErr(img,name){
+  const ph=document.createElement('div');
+  ph.className='pph';ph.textContent=name;
+  img.parentNode.replaceChild(ph,img);
+}
+</script>
+</body>
+</html>
