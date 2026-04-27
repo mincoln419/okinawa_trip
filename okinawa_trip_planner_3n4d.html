@@ -118,6 +118,8 @@ permalink: /okinawa/
     .res-desc{font-size:12px;color:var(--ts);margin-top:2px}
     .food-tags{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0}
     .food-desc{font-size:13px;color:var(--ts);margin-bottom:8px}
+    .blog-link{display:inline-flex;align-items:center;gap:5px;background:#EBF4FC;color:#1565c0;border-radius:var(--rs);padding:5px 11px;font-size:12px;font-weight:500;text-decoration:none;margin:6px 0 4px;border:1px solid #B3D4F0}
+    .blog-link:active{opacity:.75}
     @media(max-width:380px){.abt{flex-direction:column}.hdr-t{font-size:17px}}
   </style>
 </head>
@@ -197,7 +199,7 @@ permalink: /okinawa/
         <div class="tlr"><div class="tlt">18:00</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">렌트카 픽업<div class="tlsb">셔틀 → 영업소, 차량 외관 체크 꼼꼼히</div></div></div>
         <div class="tlr"><div class="tlt">19:00</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">숙소 체크인</div></div>
         <div class="tlr"><div class="tlt">19:40</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">American Village 이동<div class="tlsb">숙소에서 약 20분</div></div></div>
-        <div class="tlr"><div class="tlt">20:10</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">저녁 — Ootoya<div class="tlsb">생선구이 정식, 어린이 메뉴 있음</div></div></div>
+        <div class="tlr"><div class="tlt">20:10</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">저녁 — Ootoya<div class="tlsb">생선구이 정식, 어린이 메뉴 있음</div><a class="blog-link" href="https://m.blog.naver.com/hmihyoung/221456405032" target="_blank">📝 블로그 후기</a></div></div>
         <div class="tlr"><div class="tlt">21:00</div><div class="tll"><div class="dot"></div><div class="vert"></div></div><div class="tllb">Depot Island 야경 산책</div></div>
         <div class="tlr"><div class="tlt">22:00</div><div class="tll"><div class="dot dotg"></div></div><div class="tllb">숙소 귀환</div></div>
       </div>
@@ -206,11 +208,19 @@ permalink: /okinawa/
     <div class="card">
       <div class="sec">주요 장소</div>
       <div class="place">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/American_Village%2C_Okinawa_%282%29.jpg/640px-American_Village%2C_Okinawa_%282%29.jpg" alt="American Village" class="pimg" onerror="imgErr(this,'American Village')">
-        <div class="pi"><div class="pn">American Village</div><div class="pa">北谷町美浜 · 주차 무료 (대규모)</div><div class="pa">TEL: 098-926-4455</div></div>
+        <img src="{{ '/asset/airport_hotel.png' | relative_url }}" alt="공항 → 숙소 가는길" class="pimg" onerror="imgErr(this,'공항 → 숙소 가는길')">
+        <div class="pi"><div class="pn">가는길 · 공항 → 숙소</div><div class="pa">나하 공항 → 렌터카 픽업 → 숙소 · 약 22분</div></div>
       </div>
       <div class="place">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Depot_island_chatan.jpg/640px-Depot_island_chatan.jpg" alt="Depot Island" class="pimg" onerror="imgErr(this,'Depot Island · 야경 명소')">
+        <img src="https://tourimage.interpark.com//Spot/200/17178/202202/6378121040110234940.jpg" alt="American Village" class="pimg" onerror="imgErr(this,'American Village')">
+        <div class="pi"><div class="pn">American Village</div><div class="pa">北谷町美浜 · 주차 무료 (대규모)</div><div class="pa">TEL: 098-926-4455</div><a class="blog-link" href="https://m.blog.naver.com/staygold__/223047081605" target="_blank">📝 블로그 후기</a></div>
+      </div>
+      <div class="place">
+        <img src="{{ '/asset/ameacan_villeage.png' | relative_url }}" alt="가는길 지도" class="pimg" onerror="imgErr(this,'가는길 지도')">
+        <div class="pi"><div class="pn">가는길 · American Village</div><div class="pa">숙소 → American Village 약 20분</div></div>
+      </div>
+      <div class="place">
+        <img src="https://svcstrg.cld.navitime.jp/imgfile/02301_1800126_02.jpg" alt="Depot Island" class="pimg" onerror="imgErr(this,'Depot Island · 야경 명소')">
         <div class="pi"><div class="pn">Depot Island</div><div class="pa">American Village 내 · 야경 명소</div></div>
       </div>
       <button class="acc-btn" onclick="acc(this)"><span>📍 현장 팁</span><span class="arr">▾</span></button>
